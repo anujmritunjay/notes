@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@0.3.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+            <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <h1 class="mb-8 text-3xl text-center">Sing Up</h1>
+                    <form [formGroup]="singUpForm">
+                      <input 
+                          type="text"
+                          class="block border border-grey-light w-full p-3 rounded mb-4 block sm:inline"
+                          name="fullname"
+                          [ngClass]="{error: getControl('name')?.errors && getControl('name')?.touched}"
+                          
+                          formControlName="name"
+                          placeholder="Full Name" 
+                        />
+
+                      <div *ngIf="getControl('name')?.errors && getControl('name')?.touched">
+                        <div 
+                        class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                            <p *ngIf="getControl('name')?.errors?.required">Name is required</p>  
+                          </div>   
+                      </div>
+
+
+
+                      <input 
+                        type="text"
+                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="email"
+                        formControlName="email"
+                        [ngClass]="{error: getControl('email')?.errors && getControl('email')?.touched}"
+                        placeholder="Email" />
+
+                        <div *ngIf="getControl('email')?.errors && getControl('email')?.touched">
+                            <div 
+                            class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p *ngIf="getControl('email')?.errors?.required">E-mail is required</p>  
+                              </div>   
+                          </div>
+    
+
+                      <input 
+                          type="password"
+                          class="block border border-grey-light w-full p-3 rounded mb-4"
+                          name="password"
+                          formControlName="password"
+                          [ngClass]="{error: getControl('password')?.errors && getControl('password')?.touched}"
+                          placeholder="Password" />
+
+                          <div *ngIf="getControl('password')?.errors && getControl('password')?.touched">
+                            <div 
+                            class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p *ngIf="getControl('password')?.errors?.required">Password is required</p>  
+                              </div>   
+                          </div>
+    
+                      <input
+                        type="password"
+                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="confirm_password"
+                        formControlName="confirmPassword"
+                        [ngClass]="{error: getControl('confirmPassword')?.errors && getControl('confirmPassword')?.touched}"
+                        placeholder="Confirm Password" />
+
+                        <div *ngIf="getControl('confirmPassword')?.errors && getControl('confirmPassword')?.touched">
+                            <div 
+                            class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p *ngIf="getControl('confirmPassword')?.errors?.required">Confirm is required</p>  
+                              </div>   
+                          </div>
+    
+                  </form>
+
+                    <button 
+                        type="submit"
+                        class="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
+                        (click)="singUpSubmit()"
+                        [disabled]="false"
+                        
+                        >Create Account</button>
+                </div>
+
+                <div class="text-grey-dark mt-6">
+                    Already have an account? 
+                    <a style="cursor: pointer;" class="no-underline border-b border-blue text-blue" routerLink="/">
+                        Log in
+                    </a>.
+                </div>
+            </div>
+        </div>
+</body>
+</html>

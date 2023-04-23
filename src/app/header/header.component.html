@@ -1,0 +1,19 @@
+<div class="container" *ngIf="loggedIn">
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <h3 class="navbar-brand">{{ user?.name }}</h3>
+    <div class="nav-item">
+      <div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More Option
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Change Password</a>
+            <a class="dropdown-item" (click)="logOut()">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</div>

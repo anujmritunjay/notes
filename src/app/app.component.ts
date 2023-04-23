@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonService } from './common.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'notes';
+
+  constructor(
+    private router: Router,
+    private commonService: CommonService
+  ){
+    if(this.commonService.isLoggedIn()){
+      this.router.navigate(['/notes'])
+    }else{
+      this.router.navigate(['/login'])
+    }
+  }
 }
